@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Category List</title>
+  </head>
+  <body class="ml-3">
+    <div class="p-3">
+      <!-- <a class="bg-green-600" href="/categories/create">Create</a> -->
+      <a class="bg-yellow-600" href="/categories/create">Add Category</a>
+      <a class="bg-green-600" href="/">Home</a>
+    </div>
+    <br />
+
+    <table>
+      <thead>
+        <tr>
+          <th class="w-1/2">Name</th>
+          <th class="w-1/2">Action</th>
+        </tr>
+      </thead>
+      {{ range .Category}}
+      <tbody>
+        <tr>
+          <td class="h-6">{{.Title}}</td>
+          <td>
+            <a class="bg-yellow-500" href="/categories/{{.ID}}/edit">Edit</a>
+            <a class="bg-red-500" href="/categories/{{.ID}}/delete">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+
+      {{ end }}
+    </table>
+  </body>
+</html>

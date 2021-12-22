@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+    <title>Category</title>
+</head>
+<body>
+
+    <div class="p-3">
+        <a class="bg-green-600" href="">Index</a>
+      </div>
+
+      <form method="post" action="/categories/{{.Category.ID}}/update">
+
+        <label>Post:</label>
+        <br>
+        <input type="text" value="{{.Category.Title}}" name="Title"/>
+        <br>
+        <p>{{.Errors.Title}}</p>
+        <br>
+        <button type="submit">Update Category </button>
+        </form>
+</body>
+</html>

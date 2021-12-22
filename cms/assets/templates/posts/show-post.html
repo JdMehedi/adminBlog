@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Post List</title>
+</head>
+<body>
+                    
+  <a class="bg-yellow-600" href="/">Home</a>
+    <table>
+    <thead>
+      <tr>
+        <th class="w-60">Post Name</th>
+        <th class="w-60">Description</th>
+        <th class="w-60">Category Name</th>
+        <th class="w-60">Post Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="w-60 pl-10 h-6">{{.Post.Title}}</td>
+        <td class="w-60 pl-10  h-6">{{.Post.Description}}</td>
+        <td class="w-60 pl-12  h-6">{{.Post.CategoryName}}</td>
+        <td >
+          <img class="ml-12" src="/asset/{{.Post.Image}}" alt="Image" width="100px">
+        </td>
+        
+       </tr>
+    </tbody>                
+</body>
+</html>

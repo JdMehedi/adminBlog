@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Post</title>
+  </head>
+  <body>
+    
+
+    <div class="container mx-auto">
+      <div class="p-3">
+        <a class="bg-green-600" href="/">Index</a>
+      </div>
+      <form action="/posts/store" method="Post" enctype="multipart/form-data">
+        <label>Post:</label>
+        <br />
+        <input class="border  bg-gray-200" type="text" name="Title" value="" />
+        <br />
+        <p>{{.Errors.Title}}</p>
+        <br />
+        <label>Image:</label>
+        <br />
+        <input class="border  bg-gray-200" type="file" name="Image" placeholder="Enter your image" value="" />
+        <br />
+        <p>{{.Errors.Image}}</p>
+        <br />
+        <label>Description:</label>
+        <br>
+        <textarea class="border  bg-gray-200" name="Description" id="" cols="20" rows="10"></textarea>
+        <p>{{.Errors.Description}}</p>
+        <br/>
+        <select class="border  bg-yellow-200" name="CategoryId" id="">
+          <option value="">Category Name</option>
+          {{ range .Category}}
+          <option value="{{.ID}}" >
+            {{.Title}}
+          </option>
+          {{end}}
+        </select>
+        <br><br>
+        <button class="border  bg-gray-200" type="submit">Create Post</button>
+      </form>
+    </div>
+  </body>
+</html>

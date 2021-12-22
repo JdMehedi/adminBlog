@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Post List</title>
+</head>
+<body class="ml-3">
+  <div class="p-3">
+    <!-- <a class="bg-green-600" href="/categories/create">Create</a> -->
+    <a class="bg-yellow-600" href="/posts/create">Add Post</a>
+    <a class="bg-yellow-300" href="/categories/create">Add Category</a>
+  </div>
+  <!-- <form action="/posts/search" method="post">
+    <label for="">Search Post</label>
+    <br>
+    <input class="bg-green-100 border border-yellow-400" type="text" name="search" value=""/>
+    <br>
+    <br>
+    <button class="bg-green-600" type="submit"> Search</button>
+  </form> -->
+  <br>
+ 
+  <table>
+    <thead>
+      <tr>
+        <th class="w-1/4">Post Name</th>
+        <th class="w-1/4">Category Name</th>
+        <th class="w-1/4">Post Image</th>
+        <th class="w-1/4">Action</th>
+      </tr>
+    </thead>
+    {{ range .Post}}
+    <tbody>
+      <tr>
+        <td class="w-1/4 pl-6 h-6">{{.Title}}</td>
+        <td class="w-1/4 pl-6 h-6">{{.CategoryName}}</td>
+        <td class="w-1/4 pl-6 h-6" >
+          <img class=" pl-6 h-20" src="/asset/{{.Image}}" alt="Image" width="200px" >
+        </td>
+        <td class="px-8">
+          <a class="bg-yellow-500" href="/posts/{{.ID}}/edit">Edit</a>
+          <a class="bg-red-500" href="/posts/{{.ID}}/show">View</a>
+          <a class="bg-red-500" href="/posts/{{.ID}}/delete">Delete</a>
+        </td>
+        
+       </tr>
+    </tbody>
+ 
+ {{ end }}
+  </table>
+ 
+</body>
+</html>
