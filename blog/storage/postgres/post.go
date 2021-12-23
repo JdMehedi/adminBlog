@@ -1,9 +1,9 @@
 package postgres
 
 import (
-	"blog/blog/storage"
 	"context"
-	"log"
+
+	"blog/blog/storage"
 )
 
 const insertPost = `
@@ -29,9 +29,6 @@ func (s Storage) Create(ctx context.Context, t storage.Post) (int64, error) {
 	if err := stmt.Get(&id, t); err != nil {
 		return 0, err
 	}
-
-	log.Printf("Post ID Given: %s", id)
-
 
 	return id, nil
 }

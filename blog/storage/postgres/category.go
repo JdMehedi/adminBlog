@@ -22,7 +22,7 @@ func (s Storage) CreateCat(ctx context.Context, t storage.Category) (int64, erro
 	}
 	var id int64
 	if err := stmt.Get(&id, t); err != nil {
-		return id, err
+		return 0, err
 	}
 	log.Println("Category ID: ", id)
 	return id, nil

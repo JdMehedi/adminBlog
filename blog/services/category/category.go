@@ -1,96 +1,38 @@
+
+
 package category
 
 import (
 	"context"
-	
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 
 	"blog/blog/storage"
 	bgvc "blog/gunk/v1/category"
 )
-func (s *CategorySvc) CreateCategory(ctx context.Context, req *bgvc.CreateCategoryRequest) (*bgvc.CreateCategoryResponse, error) {
-	//Needs to validate Category
-	categories := storage.Category{
-		Title:       req.GetCategory().Title,
-	}
-	id, err := s.store.CreateCat(context.Background(), categories)
 
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "Failed to create todo: %s", err)
-	}
-
-	return &bgvc.CreateCategoryResponse{
-		ID: id,
-	}, nil
-
+type CategoryCoreLink interface{
+	CreateCat(context.Context,storage.Category)(int64,error)
+	ListCat(context.Context)([]storage.Category, error)
+	GetCat(context.Context, int64)(storage.Category, error)
+	UpdateCat(context.Context, storage.Category) error
+	DeleteCat(context.Context,int64)error
 }
 
-func (s *CategorySvc) ListCategory(ctx context.Context, req *bgvc.ListCategoryRequest) (*bgvc.ListCategoryResponse, error) {
-	//Needs to validate Category
-	res, err := s.store.ListCat(context.Background())
-
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to get Category: %s", err)
-	}
-	var ctl []*bgvc.Category
-
-	for _, value := range res {
-		ctl = append(ctl, &bgvc.Category{
-			ID:          value.ID,
-			Title:       value.Title,
-		
-		})
-	}
-	return &bgvc.ListCategoryResponse{
-		Category: ctl,
-	}, nil
-}
-func (s *CategorySvc) GetCategory(ctx context.Context, req *bgvc.GetCategoryRequest) (*bgvc.GetCategoryResponse, error) {
-	//Needs to validate Category
-	res, err := s.store.GetCat(context.Background(),req.GetID())
-
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "Failed to get Category: %s", err)
-	}
-	
-	return &bgvc.GetCategoryResponse{
-		Category: &bgvc.Category{
-			ID:res.ID,
-			Title: res.Title,
-			
-		},
-	},nil
+type CategorySvc struct {
+	bgvc.UnimplementedCategoryServiceServer
+	store CategoryCoreLink
 }
 
-func (s *CategorySvc) UpdateCategory(ctx context.Context, req *bgvc.UpdateCategoryRequest) (*bgvc.UpdateCategoryResponse, error) {
-	//Needs to validate Category
-	categories:= storage.Category{
-		ID: req.Category.ID,
-		Title: req.Category.Title,
-		
+func NewCategorySvc(c CategoryCoreLink) *CategorySvc{
+	return &CategorySvc{
+		store: c,
 	}
-	 err := s.store.UpdateCat(context.Background(),categories)
-
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "Failed to get Category: %s", err)
-	}
-	
-	return &bgvc.UpdateCategoryResponse{
-		
-	},nil
-	
 }
 
-func (s *CategorySvc) DeleteCategory(ctx context.Context, req *bgvc.DeleteCategoryRequest) (*bgvc.DeleteCategoryResponse, error) {
-	//Needs to validate Category
 
-	err := s.store.DeleteCat(context.Background(), req.GetID())
+type Po struct {
+	idd int64
+}
 
-	if err != nil {
-		return nil, status.Error(codes.Internal, "Failed to Delete category.")
-	}
-	return &bgvc.DeleteCategoryResponse{
-		
-	}, nil
+type co struct{
+s Po
 }

@@ -38,15 +38,8 @@ func (c *Post) validate() error {
 		validation.Field(&c.Title,
 			validation.Required.Error("This filed cannot be null"),
 		),
-		validation.Field(&c.Description,
-			validation.Required.Error("This filed cannot be null"),
-		),
-		validation.Field(&c.Image,
-			validation.Required.Error("This filed cannot be null"),
-		),
-		validation.Field(&c.CategoryId,
-			validation.Required.Error("This filed cannot be null"),
-		),
+		
+	
 	)
 }
 
@@ -81,10 +74,24 @@ func (h *Handler) storePost(rw http.ResponseWriter, r *http.Request) {
 		http.Error(rw, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	res, err := h.cc.ListCategory(r.Context(), &bgvc.ListCategoryRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	category := []Category{}
+	for _, value := range res.Category {
+		category = append(category, Category{
+			ID:    value.ID,
+			Title: value.Title,
+		})
+	}
 
 	file, _, err := r.FormFile("Image")
 	if err != nil {
-		fmt.Println("Error Retrieving the File")
+		Errors:= map[string]string{
+			"Image":"This field is required",
+		}
+		h.loadCreatedPostForm(rw, category, post, Errors)
 		return
 	}
 	defer file.Close()
@@ -104,17 +111,7 @@ func (h *Handler) storePost(rw http.ResponseWriter, r *http.Request) {
 	tempFile.Write(fileBytes)
 	image := tempFile.Name()
 
-	res, err := h.cc.ListCategory(r.Context(), &bgvc.ListCategoryRequest{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	category := []Category{}
-	for _, value := range res.Category {
-		category = append(category, Category{
-			ID:    value.ID,
-			Title: value.Title,
-		})
-	}
+	
 
 	if err := post.validate(); err != nil {
 		vErrors, ok := err.(validation.Errors)

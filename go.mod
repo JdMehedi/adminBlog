@@ -3,6 +3,7 @@ module blog
 go 1.17
 
 require (
+	github.com/google/go-cmp v0.5.6
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/schema v1.2.0
 	github.com/gorilla/sessions v1.2.1
