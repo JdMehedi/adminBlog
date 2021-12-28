@@ -37,3 +37,7 @@ func (cs CoreSvc) Delete(ctx context.Context, id int64) error {
 
 	return cs.core.Delete(ctx, id)
 }
+func (cs CoreSvc) SearchPost(ctx context.Context, t string)([]storage.Post, error) {
+
+	return cs.core.SearchPost(ctx,t)
+}

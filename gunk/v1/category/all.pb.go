@@ -207,6 +207,53 @@ func (*ListCategoryRequest) Descriptor() ([]byte, []int) {
 	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{3}
 }
 
+type ListCategoryResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Category []*Category `protobuf:"bytes,1,rep,name=Category,proto3" json:"Category,omitempty"`
+}
+
+func (x *ListCategoryResponse) Reset() {
+	*x = ListCategoryResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_blog_gunk_v1_category_all_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListCategoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCategoryResponse) ProtoMessage() {}
+
+func (x *ListCategoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_blog_gunk_v1_category_all_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCategoryResponse.ProtoReflect.Descriptor instead.
+func (*ListCategoryResponse) Descriptor() ([]byte, []int) {
+	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListCategoryResponse) GetCategory() []*Category {
+	if x != nil {
+		return x.Category
+	}
+	return nil
+}
+
 type GetCategoryRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -218,7 +265,7 @@ type GetCategoryRequest struct {
 func (x *GetCategoryRequest) Reset() {
 	*x = GetCategoryRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_blog_gunk_v1_category_all_proto_msgTypes[4]
+		mi := &file_blog_gunk_v1_category_all_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -231,7 +278,7 @@ func (x *GetCategoryRequest) String() string {
 func (*GetCategoryRequest) ProtoMessage() {}
 
 func (x *GetCategoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_blog_gunk_v1_category_all_proto_msgTypes[4]
+	mi := &file_blog_gunk_v1_category_all_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -244,7 +291,7 @@ func (x *GetCategoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCategoryRequest.ProtoReflect.Descriptor instead.
 func (*GetCategoryRequest) Descriptor() ([]byte, []int) {
-	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{4}
+	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetCategoryRequest) GetID() int64 {
@@ -265,7 +312,7 @@ type GetCategoryResponse struct {
 func (x *GetCategoryResponse) Reset() {
 	*x = GetCategoryResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_blog_gunk_v1_category_all_proto_msgTypes[5]
+		mi := &file_blog_gunk_v1_category_all_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -278,7 +325,7 @@ func (x *GetCategoryResponse) String() string {
 func (*GetCategoryResponse) ProtoMessage() {}
 
 func (x *GetCategoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_blog_gunk_v1_category_all_proto_msgTypes[5]
+	mi := &file_blog_gunk_v1_category_all_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -291,57 +338,10 @@ func (x *GetCategoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCategoryResponse.ProtoReflect.Descriptor instead.
 func (*GetCategoryResponse) Descriptor() ([]byte, []int) {
-	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *GetCategoryResponse) GetCategory() *Category {
-	if x != nil {
-		return x.Category
-	}
-	return nil
-}
-
-type ListCategoryResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Category []*Category `protobuf:"bytes,1,rep,name=Category,proto3" json:"Category,omitempty"`
-}
-
-func (x *ListCategoryResponse) Reset() {
-	*x = ListCategoryResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_blog_gunk_v1_category_all_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ListCategoryResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCategoryResponse) ProtoMessage() {}
-
-func (x *ListCategoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_blog_gunk_v1_category_all_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCategoryResponse.ProtoReflect.Descriptor instead.
-func (*ListCategoryResponse) Descriptor() ([]byte, []int) {
 	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *ListCategoryResponse) GetCategory() []*Category {
+func (x *GetCategoryResponse) GetCategory() *Category {
 	if x != nil {
 		return x.Category
 	}
@@ -603,6 +603,100 @@ func (*CompleteCategoryResponse) Descriptor() ([]byte, []int) {
 	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{12}
 }
 
+type SearchCategoryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Title string `protobuf:"bytes,2,opt,name=Title,proto3" json:"Title,omitempty"`
+}
+
+func (x *SearchCategoryRequest) Reset() {
+	*x = SearchCategoryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_blog_gunk_v1_category_all_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SearchCategoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchCategoryRequest) ProtoMessage() {}
+
+func (x *SearchCategoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_blog_gunk_v1_category_all_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchCategoryRequest.ProtoReflect.Descriptor instead.
+func (*SearchCategoryRequest) Descriptor() ([]byte, []int) {
+	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *SearchCategoryRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+type SearchCategoryResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Category []*Category `protobuf:"bytes,1,rep,name=Category,proto3" json:"Category,omitempty"`
+}
+
+func (x *SearchCategoryResponse) Reset() {
+	*x = SearchCategoryResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_blog_gunk_v1_category_all_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SearchCategoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchCategoryResponse) ProtoMessage() {}
+
+func (x *SearchCategoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_blog_gunk_v1_category_all_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchCategoryResponse.ProtoReflect.Descriptor instead.
+func (*SearchCategoryResponse) Descriptor() ([]byte, []int) {
+	return file_blog_gunk_v1_category_all_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *SearchCategoryResponse) GetCategory() []*Category {
+	if x != nil {
+		return x.Category
+	}
+	return nil
+}
+
 var File_blog_gunk_v1_category_all_proto protoreflect.FileDescriptor
 
 var file_blog_gunk_v1_category_all_proto_rawDesc = []byte{
@@ -623,18 +717,18 @@ var file_blog_gunk_v1_category_all_proto_rawDesc = []byte{
 	0x16, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x42, 0x0a, 0x08, 0x00, 0x18,
 	0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a, 0x06, 0x08, 0x00, 0x10, 0x00, 0x18, 0x00, 0x22,
 	0x1d, 0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x3a, 0x06, 0x08, 0x00, 0x10, 0x00, 0x18, 0x00, 0x22, 0x34,
-	0x0a, 0x12, 0x47, 0x65, 0x74, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
-	0x42, 0x0a, 0x08, 0x00, 0x18, 0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a, 0x06, 0x08, 0x00,
-	0x10, 0x00, 0x18, 0x00, 0x22, 0x4f, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x43, 0x61, 0x74, 0x65, 0x67,
-	0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a, 0x08, 0x43,
-	0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e,
-	0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72,
-	0x79, 0x42, 0x0a, 0x08, 0x00, 0x18, 0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a, 0x06, 0x08,
-	0x00, 0x10, 0x00, 0x18, 0x00, 0x22, 0x50, 0x0a, 0x14, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x61, 0x74,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x3a, 0x06, 0x08, 0x00, 0x10, 0x00, 0x18, 0x00, 0x22, 0x50,
+	0x0a, 0x14, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a, 0x08, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f,
+	0x72, 0x79, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x63, 0x61, 0x74, 0x65, 0x67,
+	0x6f, 0x72, 0x79, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x42, 0x0a, 0x08, 0x00,
+	0x18, 0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a, 0x06, 0x08, 0x00, 0x10, 0x00, 0x18, 0x00,
+	0x22, 0x34, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x42, 0x0a, 0x08, 0x00, 0x18, 0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a, 0x06,
+	0x08, 0x00, 0x10, 0x00, 0x18, 0x00, 0x22, 0x4f, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x43, 0x61, 0x74,
 	0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a,
-	0x08, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x08, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x12, 0x2e, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67,
 	0x6f, 0x72, 0x79, 0x42, 0x0a, 0x08, 0x00, 0x18, 0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a,
 	0x06, 0x08, 0x00, 0x10, 0x00, 0x18, 0x00, 0x22, 0x51, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74,
@@ -656,7 +750,16 @@ var file_blog_gunk_v1_category_all_proto_rawDesc = []byte{
 	0x08, 0x00, 0x18, 0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a, 0x06, 0x08, 0x00, 0x10, 0x00,
 	0x18, 0x00, 0x22, 0x22, 0x0a, 0x18, 0x43, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x61,
 	0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x3a, 0x06,
-	0x08, 0x00, 0x10, 0x00, 0x18, 0x00, 0x32, 0xd3, 0x04, 0x0a, 0x0f, 0x43, 0x61, 0x74, 0x65, 0x67,
+	0x08, 0x00, 0x10, 0x00, 0x18, 0x00, 0x22, 0x3a, 0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68,
+	0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x19, 0x0a, 0x05, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a,
+	0x08, 0x00, 0x18, 0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a, 0x06, 0x08, 0x00, 0x10, 0x00,
+	0x18, 0x00, 0x22, 0x52, 0x0a, 0x16, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x43, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a, 0x08,
+	0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12,
+	0x2e, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f,
+	0x72, 0x79, 0x42, 0x0a, 0x08, 0x00, 0x18, 0x00, 0x28, 0x00, 0x30, 0x00, 0x50, 0x00, 0x3a, 0x06,
+	0x08, 0x00, 0x10, 0x00, 0x18, 0x00, 0x32, 0xb4, 0x05, 0x0a, 0x0f, 0x43, 0x61, 0x74, 0x65, 0x67,
 	0x6f, 0x72, 0x79, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x5f, 0x0a, 0x0e, 0x43, 0x72,
 	0x65, 0x61, 0x74, 0x65, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x1f, 0x2e, 0x63,
 	0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x61,
@@ -693,11 +796,17 @@ var file_blog_gunk_v1_category_all_proto_rawDesc = []byte{
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f,
 	0x72, 0x79, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x61, 0x74, 0x65, 0x67,
 	0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x06, 0x88, 0x02, 0x00,
-	0x90, 0x02, 0x00, 0x28, 0x00, 0x30, 0x00, 0x1a, 0x03, 0x88, 0x02, 0x00, 0x42, 0x39, 0x48, 0x01,
-	0x50, 0x00, 0x5a, 0x1e, 0x62, 0x6c, 0x6f, 0x67, 0x2f, 0x67, 0x75, 0x6e, 0x6b, 0x2f, 0x76, 0x31,
-	0x2f, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x3b, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f,
-	0x72, 0x79, 0x80, 0x01, 0x00, 0x88, 0x01, 0x00, 0x90, 0x01, 0x00, 0xb8, 0x01, 0x00, 0xd8, 0x01,
-	0x00, 0xf8, 0x01, 0x01, 0xd0, 0x02, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x90, 0x02, 0x00, 0x28, 0x00, 0x30, 0x00, 0x12, 0x5f, 0x0a, 0x0e, 0x53, 0x65, 0x61, 0x72, 0x63,
+	0x68, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x1f, 0x2e, 0x63, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x79, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x43, 0x61, 0x74, 0x65, 0x67,
+	0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x63, 0x61, 0x74,
+	0x65, 0x67, 0x6f, 0x72, 0x79, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x43, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x06, 0x88, 0x02,
+	0x00, 0x90, 0x02, 0x00, 0x28, 0x00, 0x30, 0x00, 0x1a, 0x03, 0x88, 0x02, 0x00, 0x42, 0x39, 0x48,
+	0x01, 0x50, 0x00, 0x5a, 0x1e, 0x62, 0x6c, 0x6f, 0x67, 0x2f, 0x67, 0x75, 0x6e, 0x6b, 0x2f, 0x76,
+	0x31, 0x2f, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x3b, 0x63, 0x61, 0x74, 0x65, 0x67,
+	0x6f, 0x72, 0x79, 0x80, 0x01, 0x00, 0x88, 0x01, 0x00, 0x90, 0x01, 0x00, 0xb8, 0x01, 0x00, 0xd8,
+	0x01, 0x00, 0xf8, 0x01, 0x01, 0xd0, 0x02, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -712,44 +821,49 @@ func file_blog_gunk_v1_category_all_proto_rawDescGZIP() []byte {
 	return file_blog_gunk_v1_category_all_proto_rawDescData
 }
 
-var file_blog_gunk_v1_category_all_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_blog_gunk_v1_category_all_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_blog_gunk_v1_category_all_proto_goTypes = []interface{}{
 	(*Category)(nil),                 // 0: category.Category
 	(*CreateCategoryRequest)(nil),    // 1: category.CreateCategoryRequest
 	(*CreateCategoryResponse)(nil),   // 2: category.CreateCategoryResponse
 	(*ListCategoryRequest)(nil),      // 3: category.ListCategoryRequest
-	(*GetCategoryRequest)(nil),       // 4: category.GetCategoryRequest
-	(*GetCategoryResponse)(nil),      // 5: category.GetCategoryResponse
-	(*ListCategoryResponse)(nil),     // 6: category.ListCategoryResponse
+	(*ListCategoryResponse)(nil),     // 4: category.ListCategoryResponse
+	(*GetCategoryRequest)(nil),       // 5: category.GetCategoryRequest
+	(*GetCategoryResponse)(nil),      // 6: category.GetCategoryResponse
 	(*UpdateCategoryRequest)(nil),    // 7: category.UpdateCategoryRequest
 	(*UpdateCategoryResponse)(nil),   // 8: category.UpdateCategoryResponse
 	(*DeleteCategoryRequest)(nil),    // 9: category.DeleteCategoryRequest
 	(*DeleteCategoryResponse)(nil),   // 10: category.DeleteCategoryResponse
 	(*CompleteCategoryRequest)(nil),  // 11: category.CompleteCategoryRequest
 	(*CompleteCategoryResponse)(nil), // 12: category.CompleteCategoryResponse
+	(*SearchCategoryRequest)(nil),    // 13: category.SearchCategoryRequest
+	(*SearchCategoryResponse)(nil),   // 14: category.SearchCategoryResponse
 }
 var file_blog_gunk_v1_category_all_proto_depIdxs = []int32{
 	0,  // 0: category.CreateCategoryRequest.Category:type_name -> category.Category
-	0,  // 1: category.GetCategoryResponse.Category:type_name -> category.Category
-	0,  // 2: category.ListCategoryResponse.Category:type_name -> category.Category
+	0,  // 1: category.ListCategoryResponse.Category:type_name -> category.Category
+	0,  // 2: category.GetCategoryResponse.Category:type_name -> category.Category
 	0,  // 3: category.UpdateCategoryRequest.Category:type_name -> category.Category
-	1,  // 4: category.CategoryService.CreateCategory:input_type -> category.CreateCategoryRequest
-	4,  // 5: category.CategoryService.GetCategory:input_type -> category.GetCategoryRequest
-	3,  // 6: category.CategoryService.ListCategory:input_type -> category.ListCategoryRequest
-	7,  // 7: category.CategoryService.UpdateCategory:input_type -> category.UpdateCategoryRequest
-	9,  // 8: category.CategoryService.DeleteCategory:input_type -> category.DeleteCategoryRequest
-	11, // 9: category.CategoryService.CompleteCategory:input_type -> category.CompleteCategoryRequest
-	2,  // 10: category.CategoryService.CreateCategory:output_type -> category.CreateCategoryResponse
-	5,  // 11: category.CategoryService.GetCategory:output_type -> category.GetCategoryResponse
-	6,  // 12: category.CategoryService.ListCategory:output_type -> category.ListCategoryResponse
-	8,  // 13: category.CategoryService.UpdateCategory:output_type -> category.UpdateCategoryResponse
-	10, // 14: category.CategoryService.DeleteCategory:output_type -> category.DeleteCategoryResponse
-	12, // 15: category.CategoryService.CompleteCategory:output_type -> category.CompleteCategoryResponse
-	10, // [10:16] is the sub-list for method output_type
-	4,  // [4:10] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	0,  // 4: category.SearchCategoryResponse.Category:type_name -> category.Category
+	1,  // 5: category.CategoryService.CreateCategory:input_type -> category.CreateCategoryRequest
+	5,  // 6: category.CategoryService.GetCategory:input_type -> category.GetCategoryRequest
+	3,  // 7: category.CategoryService.ListCategory:input_type -> category.ListCategoryRequest
+	7,  // 8: category.CategoryService.UpdateCategory:input_type -> category.UpdateCategoryRequest
+	9,  // 9: category.CategoryService.DeleteCategory:input_type -> category.DeleteCategoryRequest
+	11, // 10: category.CategoryService.CompleteCategory:input_type -> category.CompleteCategoryRequest
+	13, // 11: category.CategoryService.SearchCategory:input_type -> category.SearchCategoryRequest
+	2,  // 12: category.CategoryService.CreateCategory:output_type -> category.CreateCategoryResponse
+	6,  // 13: category.CategoryService.GetCategory:output_type -> category.GetCategoryResponse
+	4,  // 14: category.CategoryService.ListCategory:output_type -> category.ListCategoryResponse
+	8,  // 15: category.CategoryService.UpdateCategory:output_type -> category.UpdateCategoryResponse
+	10, // 16: category.CategoryService.DeleteCategory:output_type -> category.DeleteCategoryResponse
+	12, // 17: category.CategoryService.CompleteCategory:output_type -> category.CompleteCategoryResponse
+	14, // 18: category.CategoryService.SearchCategory:output_type -> category.SearchCategoryResponse
+	12, // [12:19] is the sub-list for method output_type
+	5,  // [5:12] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_blog_gunk_v1_category_all_proto_init() }
@@ -807,7 +921,7 @@ func file_blog_gunk_v1_category_all_proto_init() {
 			}
 		}
 		file_blog_gunk_v1_category_all_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetCategoryRequest); i {
+			switch v := v.(*ListCategoryResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -819,7 +933,7 @@ func file_blog_gunk_v1_category_all_proto_init() {
 			}
 		}
 		file_blog_gunk_v1_category_all_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetCategoryResponse); i {
+			switch v := v.(*GetCategoryRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -831,7 +945,7 @@ func file_blog_gunk_v1_category_all_proto_init() {
 			}
 		}
 		file_blog_gunk_v1_category_all_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListCategoryResponse); i {
+			switch v := v.(*GetCategoryResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -914,6 +1028,30 @@ func file_blog_gunk_v1_category_all_proto_init() {
 				return nil
 			}
 		}
+		file_blog_gunk_v1_category_all_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SearchCategoryRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_blog_gunk_v1_category_all_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SearchCategoryResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -921,7 +1059,7 @@ func file_blog_gunk_v1_category_all_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_blog_gunk_v1_category_all_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

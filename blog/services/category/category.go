@@ -15,6 +15,7 @@ type CategoryCoreLink interface{
 	GetCat(context.Context, int64)(storage.Category, error)
 	UpdateCat(context.Context, storage.Category) error
 	DeleteCat(context.Context,int64)error
+	SearchCategory(context.Context,string)([]storage.Category,error) 
 }
 
 type CategorySvc struct {
@@ -29,10 +30,10 @@ func NewCategorySvc(c CategoryCoreLink) *CategorySvc{
 }
 
 
-type Po struct {
-	idd int64
-}
+// type Po struct {
+// 	idd int64
+// }
 
-type co struct{
-s Po
-}
+// type co struct{
+// s Po
+// }

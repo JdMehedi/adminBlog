@@ -35,3 +35,7 @@ func (cs CategoryCoreSvc) DeleteCat(ctx context.Context, id int64) error {
 
 	return cs.core.DeleteCat(ctx, id)
 }
+func (cs CategoryCoreSvc) SearchCategory(ctx context.Context, t string) ([]storage.Category,error ){
+
+	return cs.core.SearchCategory(ctx,t)
+}

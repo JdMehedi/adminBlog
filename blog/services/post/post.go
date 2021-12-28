@@ -12,6 +12,8 @@ type PostCoreLink interface{
 	Get(context.Context, int64)(storage.Post, error)
 	Update(context.Context, storage.Post) error
 	Delete(context.Context,int64)error
+	SearchPost(context.Context,string)([]storage.Post,error) 
+
 }
 
 type PostSvc struct {

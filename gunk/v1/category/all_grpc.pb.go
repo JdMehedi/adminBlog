@@ -24,6 +24,7 @@ type CategoryServiceClient interface {
 	UpdateCategory(ctx context.Context, in *UpdateCategoryRequest, opts ...grpc.CallOption) (*UpdateCategoryResponse, error)
 	DeleteCategory(ctx context.Context, in *DeleteCategoryRequest, opts ...grpc.CallOption) (*DeleteCategoryResponse, error)
 	CompleteCategory(ctx context.Context, in *CompleteCategoryRequest, opts ...grpc.CallOption) (*CompleteCategoryResponse, error)
+	SearchCategory(ctx context.Context, in *SearchCategoryRequest, opts ...grpc.CallOption) (*SearchCategoryResponse, error)
 }
 
 type categoryServiceClient struct {
@@ -88,6 +89,15 @@ func (c *categoryServiceClient) CompleteCategory(ctx context.Context, in *Comple
 	return out, nil
 }
 
+func (c *categoryServiceClient) SearchCategory(ctx context.Context, in *SearchCategoryRequest, opts ...grpc.CallOption) (*SearchCategoryResponse, error) {
+	out := new(SearchCategoryResponse)
+	err := c.cc.Invoke(ctx, "/category.CategoryService/SearchCategory", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CategoryServiceServer is the server API for CategoryService service.
 // All implementations must embed UnimplementedCategoryServiceServer
 // for forward compatibility
@@ -98,6 +108,7 @@ type CategoryServiceServer interface {
 	UpdateCategory(context.Context, *UpdateCategoryRequest) (*UpdateCategoryResponse, error)
 	DeleteCategory(context.Context, *DeleteCategoryRequest) (*DeleteCategoryResponse, error)
 	CompleteCategory(context.Context, *CompleteCategoryRequest) (*CompleteCategoryResponse, error)
+	SearchCategory(context.Context, *SearchCategoryRequest) (*SearchCategoryResponse, error)
 	mustEmbedUnimplementedCategoryServiceServer()
 }
 
@@ -122,6 +133,9 @@ func (UnimplementedCategoryServiceServer) DeleteCategory(context.Context, *Delet
 }
 func (UnimplementedCategoryServiceServer) CompleteCategory(context.Context, *CompleteCategoryRequest) (*CompleteCategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CompleteCategory not implemented")
+}
+func (UnimplementedCategoryServiceServer) SearchCategory(context.Context, *SearchCategoryRequest) (*SearchCategoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchCategory not implemented")
 }
 func (UnimplementedCategoryServiceServer) mustEmbedUnimplementedCategoryServiceServer() {}
 
@@ -244,6 +258,24 @@ func _CategoryService_CompleteCategory_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CategoryService_SearchCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CategoryServiceServer).SearchCategory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/category.CategoryService/SearchCategory",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CategoryServiceServer).SearchCategory(ctx, req.(*SearchCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CategoryService_ServiceDesc is the grpc.ServiceDesc for CategoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -274,6 +306,10 @@ var CategoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CompleteCategory",
 			Handler:    _CategoryService_CompleteCategory_Handler,
+		},
+		{
+			MethodName: "SearchCategory",
+			Handler:    _CategoryService_SearchCategory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
