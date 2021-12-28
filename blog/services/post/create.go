@@ -76,16 +76,15 @@ func (s *PostSvc) GetPost(ctx context.Context, req *bgv.GetPostRequest) (*bgv.Ge
 
 func (s *PostSvc) UpdatePost(ctx context.Context, req *bgv.UpdatePostRequest) (*bgv.UpdatePostResponse, error) {
 	//Needs to validate post
-	
+
 	post := storage.Post{
-		ID:           req.Post.ID,
-		Title:        req.Post.Title,
-		Description:  req.Post.Description,
-		CategoryId:   req.Post.CategoryId,
-		Image:        req.Post.Image,
+		ID:          req.Post.ID,
+		Title:       req.Post.Title,
+		Description: req.Post.Description,
+		CategoryId:  req.Post.CategoryId,
+		Image:       req.Post.Image,
 	}
 	err := s.store.Update(context.Background(), post)
-
 
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "Failed to get post: %s", err)
@@ -104,4 +103,30 @@ func (s *PostSvc) DeletePost(ctx context.Context, req *bgv.DeletePostRequest) (*
 		return nil, status.Error(codes.Internal, "Failed to Delete category.")
 	}
 	return &bgv.DeletePostResponse{}, nil
+}
+
+func (s *PostSvc) SearchPost(ctx context.Context, req *bgv.SearchPostRequest) (*bgv.SearchPostResponse, error) {
+	//Needs to validate Post
+	res, err := s.store.SearchPost(context.Background(), req.GetTitle())
+
+	var sec []*bgv.Post
+
+	for _, value := range res {
+		sec = append(sec, &bgv.Post{
+			ID:           value.ID,
+			Title:        value.Title,
+			Description:  value.Description,
+			CategoryId:   value.CategoryId,
+			Image:        value.Image,
+			CategoryName: value.CategoryName,
+		})
+	}
+	fmt.Println(sec)
+	if err != nil {
+		return nil, status.Error(codes.Internal, "Failed to Search Post.")
+	}
+
+	return &bgv.SearchPostResponse{
+		Post: sec,
+	}, nil
 }

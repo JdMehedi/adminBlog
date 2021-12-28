@@ -24,6 +24,7 @@ type PostServiceClient interface {
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*UpdatePostResponse, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
 	CompletePost(ctx context.Context, in *CompletePostRequest, opts ...grpc.CallOption) (*CompletePostResponse, error)
+	SearchPost(ctx context.Context, in *SearchPostRequest, opts ...grpc.CallOption) (*SearchPostResponse, error)
 }
 
 type postServiceClient struct {
@@ -88,6 +89,15 @@ func (c *postServiceClient) CompletePost(ctx context.Context, in *CompletePostRe
 	return out, nil
 }
 
+func (c *postServiceClient) SearchPost(ctx context.Context, in *SearchPostRequest, opts ...grpc.CallOption) (*SearchPostResponse, error) {
+	out := new(SearchPostResponse)
+	err := c.cc.Invoke(ctx, "/post.PostService/SearchPost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostServiceServer is the server API for PostService service.
 // All implementations must embed UnimplementedPostServiceServer
 // for forward compatibility
@@ -98,6 +108,7 @@ type PostServiceServer interface {
 	UpdatePost(context.Context, *UpdatePostRequest) (*UpdatePostResponse, error)
 	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
 	CompletePost(context.Context, *CompletePostRequest) (*CompletePostResponse, error)
+	SearchPost(context.Context, *SearchPostRequest) (*SearchPostResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -122,6 +133,9 @@ func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostReq
 }
 func (UnimplementedPostServiceServer) CompletePost(context.Context, *CompletePostRequest) (*CompletePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CompletePost not implemented")
+}
+func (UnimplementedPostServiceServer) SearchPost(context.Context, *SearchPostRequest) (*SearchPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchPost not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
 
@@ -244,6 +258,24 @@ func _PostService_CompletePost_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PostService_SearchPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).SearchPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostService/SearchPost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).SearchPost(ctx, req.(*SearchPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PostService_ServiceDesc is the grpc.ServiceDesc for PostService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -274,6 +306,10 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CompletePost",
 			Handler:    _PostService_CompletePost_Handler,
+		},
+		{
+			MethodName: "SearchPost",
+			Handler:    _PostService_SearchPost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

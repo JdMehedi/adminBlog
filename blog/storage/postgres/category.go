@@ -81,4 +81,16 @@ func (s Storage) DeleteCat(ctx context.Context, id int64) error {
 		return s.db.Get(&data, "DELETE FROM categories WHERE id=$1 RETURNING *", id)
 	
 	}
+func (s Storage) SearchCategory(ctx context.Context,title string) ([]storage.Category, error ){
+	// fmt.Println("done")
+		var data []storage.Category
+
+		err:= s.db.Select(&data, "Select * FROM categories WHERE title ILIKE '%%' || $1 || '%%'",title )
+		
+		if err!=nil{
+			return nil,err
+		}
+		return data,nil
+	
+	}
 	

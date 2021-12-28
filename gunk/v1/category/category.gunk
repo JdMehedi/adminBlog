@@ -1,9 +1,8 @@
 package category
 
 type Category struct {
-	ID          int64  `pb:"1"`
-	Title       string `pb:"2"`
-	
+	ID    int64  `pb:"1"`
+	Title string `pb:"2"`
 }
 
 type CreateCategoryRequest struct {
@@ -26,7 +25,6 @@ type GetCategoryResponse struct {
 	Category Category `pb:"1"`
 }
 
-
 type UpdateCategoryRequest struct {
 	Category Category `pb:"1"`
 }
@@ -43,6 +41,13 @@ type CompleteCategoryRequest struct {
 }
 type CompleteCategoryResponse struct{}
 
+type SearchCategoryRequest struct {
+	Title string `pb:"2"`
+}
+type SearchCategoryResponse struct {
+	Category []Category `pb:"1"`
+}
+
 type CategoryService interface {
 	CreateCategory(CreateCategoryRequest) CreateCategoryResponse
 	GetCategory(GetCategoryRequest) GetCategoryResponse
@@ -50,4 +55,5 @@ type CategoryService interface {
 	UpdateCategory(UpdateCategoryRequest) UpdateCategoryResponse
 	DeleteCategory(DeleteCategoryRequest) DeleteCategoryResponse
 	CompleteCategory(CompleteCategoryRequest) CompleteCategoryResponse
+	SearchCategory(SearchCategoryRequest) SearchCategoryResponse
 }

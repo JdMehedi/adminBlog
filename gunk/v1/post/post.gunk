@@ -46,6 +46,15 @@ type CompletePostRequest struct {
 }
 type CompletePostResponse struct{}
 
+type SearchPostRequest struct {
+	Title string `pb:"2"`
+}
+
+type SearchPostResponse struct{
+	Post []Post `pb:"1"`
+}
+
+
 type PostService interface {
 	CreatePost(CreatePostRequest) CreatePostResponse
 	GetPost(GetPostRequest) GetPostResponse
@@ -53,4 +62,5 @@ type PostService interface {
 	UpdatePost(UpdatePostRequest) UpdatePostResponse
 	DeletePost(DeletePostRequest) DeletePostResponse
 	CompletePost(CompletePostRequest) CompletePostResponse
+	SearchPost(SearchPostRequest) SearchPostResponse
 }

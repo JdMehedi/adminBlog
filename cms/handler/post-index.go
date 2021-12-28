@@ -48,3 +48,30 @@ vars := mux.Vars(r)
 	}
 	http.Redirect(rw,r, "/", http.StatusTemporaryRedirect)
 }
+
+func (h *Handler)searchPost(rw http.ResponseWriter, r *http.Request){
+
+	if err:=r.ParseForm(); err !=nil{
+		http.Error(rw, err.Error(),http.StatusInternalServerError)
+		return
+	}
+
+	res:=r.FormValue("search")
+	fmt.Println("3333333333333333333")
+	fmt.Println(res)
+	fmt.Println("2222222222222222")
+
+	getRes,err:= h.tc.SearchPost(r.Context(),&bgv.SearchPostRequest{
+		Title: res,
+	})
+	if err!=nil{
+		log.Fatal(err)
+	}
+	fmt.Println("################")
+	fmt.Println(getRes)
+	fmt.Println("@@@@@@@@@@@@@@@@@@")
+	if err:= h.templates.ExecuteTemplate(rw,"index-post.html", getRes); err !=nil{
+		http.Error(rw, err.Error(),http.StatusInternalServerError)
+		return
+	}
+}

@@ -46,10 +46,12 @@ func New(decoder *schema.Decoder, sess *sessions.CookieStore,
 	s.HandleFunc("/posts/{id:[0-9]+}/update", h.updatePost)
 	s.HandleFunc("/posts/{id:[0-9]+}/show", h.viewPost)
 	s.HandleFunc("/posts/{id:[0-9]+}/delete", h.deletePost)
+	s.HandleFunc("/posts/search", h.searchPost)
 	//catCategory
 	s.HandleFunc("/categories/create", h.createCategory)
 	s.HandleFunc("/categories/store", h.storeCategory)
 	s.HandleFunc("/categories/{id:[0-9]+}/edit", h.editCategory)
+	s.HandleFunc("/categories/search", h.searchCategory)
 	s.HandleFunc("/categories/{id:[0-9]+}/update", h.updateCategory)
 	s.HandleFunc("/categories/{id:[0-9]+}/delete", h.deleteCategory)
 
