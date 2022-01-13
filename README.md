@@ -10,5 +10,7 @@ go run migrations/migrate.go up
 ~~~
 DATABASE_CONNECTION="user=postgres password=Passw0rd host=localhost port=5432 sslmode=disable" go test -v ./...
 ~~~
-
+# google chrome
+~~~
+https://github.com/MehediCodemen/githubCommand/new/master?readme=1
 ~~~
